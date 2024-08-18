@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <title>Challenge For</title>
+</head>
+
+<body>
+    <h1>Use the search engine to get the phone numbers of the following people</h1>
+    <input type="text" placeholder="Name">
+    <button>SEARCH</button>
+    <h3>Available People</h3>
+    <p></p>
+    <ul>
+        <li>André</li>
+        <li>Michael</li>
+        <li>Sandler</li>
+        <li>Walter</li>
+    </ul>
+</body>
+<style>
+    * {
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    input {
+        height: 35px;
+        margin: 10px 20px;
+        padding: 7px;
+        font-size: 30px;
+        border-radius: 4px;
+    }
+
+    button {
+        height: 45px;
+        width: 150px;
+        font-size: 25px;
+        border-radius: 8px;
+        cursor: pointer;
+        background-color: blue;
+        color: #ffffff;
+        border: none;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    h3,
+    ul {
+        font-size: 25px;
+    }
+
+    p {
+        font-size: 35px;
+    }
+</style>
+
+<script>
+    const input = document.querySelector("input")
+    const button = document.querySelector("button")
+    const paragraph = document.querySelector("p")
+
+
+    let names = [
+        { name: "André", phone: "+55981765-4321" },
+        { name: "Michael", phone: "+505842-5662" },
+        { name: "Sandler", phone: "+505711-9601" },
+        { name: "Walter", phone: "+505503-4455" }
+
+    ]
+
+    function show() {
+
+        for (let i = 0; i < names.length; i++) {
+
+            if (input.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"") === names[i].name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")) {
+                paragraph.innerHTML = `Contact found
+ ${names[i].name} Phone ${names[i].phone}`
+
+                break
+            } else {
+                paragraph.innerHTML = "Contact not found, try again."
+            }
+
+        }
+
+    }
+
+
+    button.addEventListener("click", show)
+
+</script>
+
+</html>
